@@ -1,11 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [navbar, setNavbar] = useState(false);
+
+  // console.log(window.pageYOffset);
+
+  // useEffect(() => {
+  //   const changeBackground = () => {
+  //     if (window.scrollY > 80) {
+  //       setNavbar("navbar active");
+  //     } else {
+  //       setNavbar("navbar");
+  //     }
+  //   };
+  //   window.addEventListener("scroll", changeBackground);
+  // }, []);
+
+  useEffect(() => {
+    // if (typeof window !== "undefined") {
+    window.addEventListener("scroll", () =>
+      window.scrollY > 80 ? setNavbar(true) : setNavbar(false)
+    );
+    // }
+  }, []);
+
+  console.log("navbar", navbar);
+
   return (
-    <nav className="navbar">
+    <nav className={navbar ? "navbar active" : "navbar"}>
       <h3 className="logo">Logo</h3>
       <ul
         className={isMobile ? "nav-links-mobile" : "nav-links"}
