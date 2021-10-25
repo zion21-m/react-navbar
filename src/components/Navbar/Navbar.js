@@ -6,19 +6,6 @@ const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [navbar, setNavbar] = useState(false);
 
-  // console.log(window.pageYOffset);
-
-  // useEffect(() => {
-  //   const changeBackground = () => {
-  //     if (window.scrollY > 80) {
-  //       setNavbar("navbar active");
-  //     } else {
-  //       setNavbar("navbar");
-  //     }
-  //   };
-  //   window.addEventListener("scroll", changeBackground);
-  // }, []);
-
   useEffect(() => {
     // if (typeof window !== "undefined") {
     window.addEventListener("scroll", () =>
@@ -26,8 +13,6 @@ const Navbar = () => {
     );
     // }
   }, []);
-
-  console.log("navbar", navbar);
 
   return (
     <nav className={navbar ? "navbar active" : "navbar"}>
